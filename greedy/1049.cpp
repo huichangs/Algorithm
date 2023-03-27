@@ -1,7 +1,8 @@
+//1. 행 중에서 제일 작은 거 찾기 (set, one)따 로 
+//2. 세트랑 낱개(N / 6) * set + (N % 6) * one, 낱개로만N * one, 세트로만 (N / 6 + 1) * set
+
 #include <iostream>
 #include <algorithm>
-#include <vector>
-#include <stdlib.h>
 
 using namespace std;
 
