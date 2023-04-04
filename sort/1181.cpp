@@ -3,6 +3,8 @@
 #include<vector>
 #include<string>
 
+#define endl '\n'
+
 using namespace std;
 
 bool compare(string s1, string s2){
@@ -21,14 +23,14 @@ int main(){
 	vector<string> str;
 	for(int i = 0; i < n; i++){
 		cin >> tmp;
-		str.push_back(tmp);	
+		str.push_back(tmp);
 	}
 	
 	sort(str.begin(), str.end(), compare);
 	str.erase(unique(str.begin(), str.end()), str.end());
 	
 	for(int i = 0; i < str.size(); i++){
-		cout << str.at(i) << '\n';
+		cout << str.at(i) << endl;
 	}
 	
 	return 0;

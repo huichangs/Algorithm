@@ -13,6 +13,7 @@ int selectSort(int arr[], int size) {
 		}
 		temp = arr[min];
 		arr[min] = arr[i];
+		
 		arr[i] = temp;
 	}
 	return 1;
