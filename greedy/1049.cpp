@@ -1,5 +1,5 @@
-//1. Çà Áß¿¡¼­ Á¦ÀÏ ÀÛÀº °Å Ã£±â (set, one)µû ·Î 
-//2. ¼¼Æ®¶û ³¹°³(N / 6) * set + (N % 6) * one, ³¹°³·Î¸¸N * one, ¼¼Æ®·Î¸¸ (N / 6 + 1) * set
+//1. í–‰ ì¤‘ì—ì„œ ì œì¼ ì‘ì€ ê±° ì°¾ê¸° (set, one)ë”° ë¡œ 
+//2. ì„¸íŠ¸ë‘ ë‚±ê°œ(N / 6) * set + (N % 6) * one, ë‚±ê°œë¡œë§ŒN * one, ì„¸íŠ¸ë¡œë§Œ (N / 6 + 1) * set
 
 #include <iostream>
 #include <algorithm>
@@ -26,7 +26,6 @@ int main(){
 	result = min((N / 6) * set + (N % 6) * one, N * one);
 	result = min(result, (N / 6 + 1) * set);
 
-	
 	cout << result << endl;
 	
 	return 0;
