@@ -22,8 +22,6 @@ int main(){
 		}
 	}
 	
-	
-	
 	cout << p.size() << '\n';
 	
 	sort(p.begin(), p.end());
