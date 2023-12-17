@@ -1,60 +1,48 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.io.*;
 
-// 알파벳
-// DFS
 public class Main {
-	static int r, c, maxStepCount = 1;
-	static char[][] map;
-	static int[][] dp;
-	static int[] moveX = {0, 1, 0, -1};
-	static int[] moveY = {-1, 0, 1, 0};
-	static final int A = 'A';
-	static boolean[] visited = new boolean[26];	// A-Z 중 방문했던 알파벳
-	public static void main(String args[]) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		r = Integer.valueOf(st.nextToken());
-		c = Integer.valueOf(st.nextToken());
-		map = new char[r][c];
-		dp = new int[r][c];
-		
-		// 입력
-		for(int i = 0; i < r; i++) {
-			String line = br.readLine();
-			map[i] = line.toCharArray();
-		}
-		
-		dp[0][0] = 1;
-		dfs(0, 0, 1);
-		System.out.println(maxStepCount);
-	}
-	
-	// 알파벳 사용여부 배열로 
-	private static int dfs(int x, int y, int count) {
-		visited[map[y][x] - A] = true;
-		
-		for(int i = 0; i < 4; i++) {
-			int nextX = x + moveX[i];
-			int nextY = y + moveY[i];
-			
-			// map 범위 체크
-			if(nextX < 0 || nextX >= c || nextY < 0 || nextY >= r) {
-				continue;
-			}
-			
-			char alphabet = map[nextY][nextX];
-			if(visited[alphabet - A]) {
-				continue;
-			}
-			
-			int result = dfs(nextX, nextY, count + 1);
-			maxStepCount = Math.max(maxStepCount, result);
-		}
-		
-		visited[map[y][x] - A] = false;
-		return count;
-	}
+    static int r, c;
+    static char[][] arr;
+    static int[] xMove = { -1, 1, 0, 0 };
+    static int[] yMove = { 0, 0, 1, -1 };
+    static boolean[] visited = new boolean[26];
+    static int answer = 0;
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        r = Integer.parseInt(st.nextToken());
+        c = Integer.parseInt(st.nextToken());
+        arr = new char[r][c];
+
+        for (int i = 0; i < r; i++) {
+            String tmp = br.readLine();
+            for (int j = 0; j < c; j++) {
+                arr[i][j] = tmp.charAt(j);
+            }
+        }
+
+        visited[arr[0][0] - 'A'] = true;
+        dfs(0, 0, 1);
+        System.out.println(answer);
+    }
+
+    static void dfs(int x, int y, int length) {
+        answer = Math.max(answer, length);
+        
+        for (int i = 0; i < 4; i++) {
+            int nextX = x + xMove[i];
+            int nextY = y + yMove[i];
+            if (nextX < 0 || nextX >= r || nextY < 0 || nextY >= c || visited[arr[nextX][nextY] - 'A']) {
+                continue;
+            }
+
+            visited[arr[nextX][nextY] - 'A'] = true;
+            dfs(nextX, nextY, length + 1);
+            visited[arr[nextX][nextY] - 'A'] = false;
+        }
+
+    }
 }
