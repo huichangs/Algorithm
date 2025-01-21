@@ -22,13 +22,6 @@ public:
         arr[1][size - 1] = 0;
         arr[0][0] = 0;
 
-        for(int i = 0; i < 2; i++){
-            for(int j = 0; j < size; j++){
-                cout << arr[i][j] << " ";
-            }
-            cout << endl;
-        }
-
         long long answer = arr[0][1];
         for(int i = 2; i < size; i++){
             long long tmp = max(arr[0][i], arr[1][i - 2]);
