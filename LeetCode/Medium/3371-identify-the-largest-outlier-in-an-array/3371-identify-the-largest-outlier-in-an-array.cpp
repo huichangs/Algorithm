@@ -13,9 +13,10 @@ public:
         for(int i = 0; i < nums.size(); i++){
             int specialSum = nums[i];
             int outlier = sum - (2 * specialSum);
-            cout << "specialSum " << specialSum << " outlier: " << outlier << endl;
+            //cout << "specialSum " << specialSum << " outlier: " << outlier << endl;
             
             if(binary_search(nums.begin(), nums.begin() + i, outlier)){
+                //cout << "findoutlier" << outlier << endl;
                 answer = max(answer, outlier);
             }
             if(binary_search(nums.begin() + i + 1, nums.end(), outlier)){
