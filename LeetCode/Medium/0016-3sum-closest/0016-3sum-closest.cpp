@@ -9,9 +9,9 @@ public:
         int answer_diff = 1000000000;
 
         sort(nums.begin(), nums.end());
-        for(int i = 0; i < nums.size(); i++){
-            cout << nums[i] << " ";
-        }
+        // for(int i = 0; i < nums.size(); i++){
+        //     cout << nums[i] << " ";
+        // }
 
         for(int i = 0; i < nums.size() - 2; i++){
             int sum = 0;
