@@ -16,7 +16,6 @@ public:
         for(int i = 0; i < nums.size() - 2; i++){
             int sum = 0;
             int part_target = -(nums[i] - target);
-            cout << i << ", part_target: " << part_target << endl;
             int tmp_diff = 1000000000;
 
             int b = i + 1;
