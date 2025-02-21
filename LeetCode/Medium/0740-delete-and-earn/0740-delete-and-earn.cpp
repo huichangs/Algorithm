@@ -1,7 +1,7 @@
 class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
-        map<int, int> hashmap;
+        unordered_map<int, int> hashmap;
         int maxV = 0;
 
         for(int i = 0; i < nums.size(); i++){
