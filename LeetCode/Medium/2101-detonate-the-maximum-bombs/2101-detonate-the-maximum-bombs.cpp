@@ -17,7 +17,10 @@ public:
                 tmp_answer++;
 
                 for(int j = 0; j < visited.size(); j++){
-                    if(reachable(bombs[curr][0], bombs[curr][1], bombs[j][0], bombs[j][1], bombs[curr][2]) && !visited[j]){
+                    long long dist = (long long)(bombs[curr][0] - bombs[j][0]) * (bombs[curr][0] - bombs[j][0]) +
+                                    (long long) (bombs[curr][1] - bombs[j][1]) * (bombs[curr][1] - bombs[j][1]);
+                    long long bombDist = (long long) bombs[curr][2] * bombs[curr][2];
+                    if(dist <= bombDist && !visited[j]){
                         queue.push_back(j);
                         visited[j] = true;
                     }
@@ -28,15 +31,5 @@ public:
         }
 
         return answer;
-    }
-
-    bool reachable(int x1, int y1, int x2, int y2, int rad){
-        long long dist = (long long)(x1 - x2) * (x1 - x2) + (long long) (y1 - y2) * (y1 - y2);
-        long long bombDist = (long long) rad * rad;
-        if(dist <= bombDist){
-            return true;
-        }else{
-            return false;
-        }
     }
 };
