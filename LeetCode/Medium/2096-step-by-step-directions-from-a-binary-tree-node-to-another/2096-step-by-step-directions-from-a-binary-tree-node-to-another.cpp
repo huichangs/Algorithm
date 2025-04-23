@@ -11,13 +11,19 @@
  */
 class Solution {
 private:
-string rTos, rTod;
+    bool flag = false;
+    string rTo = "";
 public:
     string getDirections(TreeNode* root, int startValue, int destValue) {
         string answer = "";
-        string tmp;
-        search(root, startValue, destValue, tmp);
-        
+        flag = false;
+        search(root, startValue, "");
+        string rTos = rTo;
+
+        flag = false;
+        search(root, destValue, "");
+        string rTod = rTo;
+
         int i = 0;
         int j = 0;
         while(i < rTos.size()){
@@ -37,21 +43,18 @@ public:
         return answer;
     }
 
-    void search(TreeNode* curr, int start, int dest, string& s){
-        if(curr->val == start){
-            rTos = s;
-        }
+    void search(TreeNode* curr, int dest, string s){
         if(curr->val == dest){
-            rTod = s;
+            rTo = s;
+            flag = true;
+            return;
         }
         
-        if(curr->left != NULL){
-            search(curr->left, start, dest, s += 'L');
-            s.pop_back();
+        if(curr->left != NULL && !flag){
+            search(curr->left, dest, s + 'L');
         }
-        if(curr->right != NULL){
-            search(curr->right, start, dest, s +='R');
-            s.pop_back();
+        if(curr->right != NULL && !flag){
+            search(curr->right, dest, s + 'R');
         }
 
         return;
